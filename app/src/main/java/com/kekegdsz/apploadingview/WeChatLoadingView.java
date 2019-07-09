@@ -17,8 +17,12 @@ public class WeChatLoadingView extends View {
 
     private Paint mPaint;
     private int circleColor = getResources().getColor(R.color.loading_view_color);
-    private float defaultCircleSize = 5;
-
+    private float leftCircleSize = 5;
+    private float midCircleSize = 10;
+    private float rightCircleSize = 15;
+    private ObjectAnimator mLeftScaleAnimator;
+    private ObjectAnimator mMidScaleAnimator;
+    private ObjectAnimator mRightScaleAnimator;
 
     public WeChatLoadingView(Context context) {
         this(context, null);
@@ -37,6 +41,40 @@ public class WeChatLoadingView extends View {
         mPaint = new Paint();
         mPaint.setColor(circleColor);
         mPaint.setAntiAlias(true);
+        mLeftScaleAnimator = ObjectAnimator
+                .ofFloat(leftCircleSize, "leftCircleSize", 5, 15);
+        mLeftScaleAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                leftCircleSize = (float) animation.getAnimatedValue();
+                postInvalidate();
+            }
+        });
+        mMidScaleAnimator = ObjectAnimator
+                .ofFloat(midCircleSize, "midCircleSize", 5, 15);
+        mMidScaleAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                midCircleSize = (float) animation.getAnimatedValue();
+            }
+        });
+        mRightScaleAnimator = ObjectAnimator
+                .ofFloat(rightCircleSize, "rightCircleSize", 5, 15);
+        mRightScaleAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                rightCircleSize = (float) animation.getAnimatedValue();
+            }
+        });
+        setAnimValue(mLeftScaleAnimator);
+        setAnimValue(mMidScaleAnimator);
+        setAnimValue(mRightScaleAnimator);
+    }
+
+    private void setAnimValue(ObjectAnimator anim) {
+        anim.setDuration(600);
+        anim.setRepeatMode(ValueAnimator.REVERSE);
+        anim.setRepeatCount(ValueAnimator.INFINITE);
     }
 
     @Override
@@ -81,35 +119,41 @@ public class WeChatLoadingView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawCircle(20, 20, defaultCircleSize, mPaint);
-        canvas.drawCircle(90, 20, defaultCircleSize + 5, mPaint);
-        canvas.drawCircle(160, 20, defaultCircleSize + 10, mPaint);
-        startScaleAnimator(defaultCircleSize);
+        canvas.drawCircle(20, 20, leftCircleSize, mPaint);
+        canvas.drawCircle(90, 20, midCircleSize, mPaint);
+        canvas.drawCircle(160, 20, rightCircleSize, mPaint);
     }
 
-
-    public float getDefaultCircleSize() {
-        return defaultCircleSize;
+    public float getLeftCircleSize() {
+        return leftCircleSize;
     }
 
-    public void setDefaultCircleSize(float defaultCircleSize) {
-        this.defaultCircleSize = defaultCircleSize;
+    public void setLeftCircleSize(float leftCircleSize) {
+        this.leftCircleSize = leftCircleSize;
     }
 
-    private void startScaleAnimator(float value) {
-        ObjectAnimator mScaleAnimator = ObjectAnimator
-                .ofFloat(this, "defaultCircleSize", value, 15);
-        mScaleAnimator.setDuration(30);
-        mScaleAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                defaultCircleSize = (float) animation.getAnimatedValue();
+    public float getMidCircleSize() {
+        return midCircleSize;
+    }
 
-            }
-        });
-        mScaleAnimator.setRepeatCount(ValueAnimator.INFINITE);
-        mScaleAnimator.start();
+    public void setMidCircleSize(float midCircleSize) {
+        this.midCircleSize = midCircleSize;
+    }
 
+    public float getRightCircleSize() {
+        return rightCircleSize;
+    }
+
+    public void setRightCircleSize(float rightCircleSize) {
+        this.rightCircleSize = rightCircleSize;
+    }
+
+    public void startScaleAnimator() {
+        mLeftScaleAnimator.start();
+        mMidScaleAnimator.setStartDelay(200);
+        mMidScaleAnimator.start();
+        mRightScaleAnimator.setStartDelay(400);
+        mRightScaleAnimator.start();
     }
 
 }
