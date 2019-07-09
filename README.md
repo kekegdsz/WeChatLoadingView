@@ -9,7 +9,7 @@
 
 LoadingView|
 ---------- |
-![LoadingView](https://github.com/kekegdsz/WeChatLoadingView/blob/master/git/loading.gif?raw=true width="300" height="600")
+![LoadingView](https://github.com/kekegdsz/WeChatLoadingView/blob/master/git/loading.gif?raw=true)
 
 ## Gradle:
 Add it in your root build.gradle at the end of repositories:
