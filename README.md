@@ -1,7 +1,7 @@
 # LoadingView
 > 一个简单的高仿微信进入小程序的loading，三个点循环
 
-[![](https://jitpack.io/v/kekegdsz/WeChatLoadingView.svg)](https://jitpack.io/#kekegdsz/WeChatLoadingView)｛:width = "300" height = "600"｝
+[![](https://jitpack.io/v/kekegdsz/WeChatLoadingView.svg)](https://jitpack.io/#kekegdsz/WeChatLoadingView)
 
 * 2019年7月9日 22:59:45
 > 1.0.0版本，loading
@@ -9,7 +9,7 @@
 
 LoadingView|
 ---------- |
-![LoadingView](https://github.com/kekegdsz/WeChatLoadingView/blob/master/git/loading.gif?raw=true)
+![LoadingView](https://github.com/kekegdsz/WeChatLoadingView/blob/master/git/loading.gif?raw=true){:width = "300" height = "600"}
 
 ## Gradle:
 Add it in your root build.gradle at the end of repositories:
