@@ -4,6 +4,5 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="loading_view_color_highlight">#666666</color>
-    <color name="loading_view_color">#a8a8a8</color>
+
 </resources>

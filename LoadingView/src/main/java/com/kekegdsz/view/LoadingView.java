@@ -1,32 +1,33 @@
-package com.kekegdsz.apploadingview;
+package com.kekegdsz.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by keke on 2018/12/7.
  */
 
-public class WeChatLoadingView extends View {
+public class LoadingView extends View {
 
     private Paint mPaint;
     private int circleColor = getResources().getColor(R.color.loading_view_color);
     private int circleColorHighlight = getResources().getColor(R.color.loading_view_color_highlight);
     private float circleSize = 10;
 
-    public WeChatLoadingView(Context context) {
+    public LoadingView(Context context) {
         this(context, null);
     }
 
-    public WeChatLoadingView(Context context, @Nullable AttributeSet attrs) {
+    public LoadingView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public WeChatLoadingView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public LoadingView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
@@ -108,12 +109,12 @@ public class WeChatLoadingView extends View {
                 canvas.drawCircle(160, 20, circleSize, mPaint);
                 break;
         }
-        if (highlightIndex == 0) {
-            highlightIndex++;
-        } else if (highlightIndex == 2) {
-            highlightIndex--;
+
+        highlightIndex++;
+        postInvalidateDelayed(250);
+        if (highlightIndex > 2) {
+            highlightIndex = 0;
         }
-        postInvalidateDelayed(30);
     }
 
 }
