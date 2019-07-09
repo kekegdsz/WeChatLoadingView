@@ -104,6 +104,7 @@ public class WeChatLoadingView extends View {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 defaultCircleSize = (float) animation.getAnimatedValue();
+
             }
         });
         mScaleAnimator.setRepeatCount(ValueAnimator.INFINITE);
