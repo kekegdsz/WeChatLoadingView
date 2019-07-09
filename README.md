@@ -7,4 +7,4 @@
 
 LoadingView|
 ---------- |
-![LoadingView]https://github.com/kekegdsz/WeChatLoadingView/blob/master/git/loading.gif?raw=true)
+![LoadingView](https://github.com/kekegdsz/WeChatLoadingView/blob/master/git/loading.gif?raw=true)
