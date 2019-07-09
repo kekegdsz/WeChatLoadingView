@@ -1,7 +1,5 @@
 package com.kekegdsz.apploadingview;
 
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -17,12 +15,8 @@ public class WeChatLoadingView extends View {
 
     private Paint mPaint;
     private int circleColor = getResources().getColor(R.color.loading_view_color);
-    private float leftCircleSize = 5;
-    private float midCircleSize = 10;
-    private float rightCircleSize = 15;
-    private ObjectAnimator mLeftScaleAnimator;
-    private ObjectAnimator mMidScaleAnimator;
-    private ObjectAnimator mRightScaleAnimator;
+    private int circleColorHighlight = getResources().getColor(R.color.loading_view_color_highlight);
+    private float circleSize = 10;
 
     public WeChatLoadingView(Context context) {
         this(context, null);
@@ -41,40 +35,7 @@ public class WeChatLoadingView extends View {
         mPaint = new Paint();
         mPaint.setColor(circleColor);
         mPaint.setAntiAlias(true);
-        mLeftScaleAnimator = ObjectAnimator
-                .ofFloat(leftCircleSize, "leftCircleSize", 5, 15);
-        mLeftScaleAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                leftCircleSize = (float) animation.getAnimatedValue();
-                postInvalidate();
-            }
-        });
-        mMidScaleAnimator = ObjectAnimator
-                .ofFloat(midCircleSize, "midCircleSize", 5, 15);
-        mMidScaleAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                midCircleSize = (float) animation.getAnimatedValue();
-            }
-        });
-        mRightScaleAnimator = ObjectAnimator
-                .ofFloat(rightCircleSize, "rightCircleSize", 5, 15);
-        mRightScaleAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                rightCircleSize = (float) animation.getAnimatedValue();
-            }
-        });
-        setAnimValue(mLeftScaleAnimator);
-        setAnimValue(mMidScaleAnimator);
-        setAnimValue(mRightScaleAnimator);
-    }
 
-    private void setAnimValue(ObjectAnimator anim) {
-        anim.setDuration(600);
-        anim.setRepeatMode(ValueAnimator.REVERSE);
-        anim.setRepeatCount(ValueAnimator.INFINITE);
     }
 
     @Override
@@ -117,43 +78,42 @@ public class WeChatLoadingView extends View {
         setMeasuredDimension(width, height);
     }
 
+    private int highlightIndex = 0;
+
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawCircle(20, 20, leftCircleSize, mPaint);
-        canvas.drawCircle(90, 20, midCircleSize, mPaint);
-        canvas.drawCircle(160, 20, rightCircleSize, mPaint);
-    }
-
-    public float getLeftCircleSize() {
-        return leftCircleSize;
-    }
-
-    public void setLeftCircleSize(float leftCircleSize) {
-        this.leftCircleSize = leftCircleSize;
-    }
-
-    public float getMidCircleSize() {
-        return midCircleSize;
-    }
-
-    public void setMidCircleSize(float midCircleSize) {
-        this.midCircleSize = midCircleSize;
-    }
-
-    public float getRightCircleSize() {
-        return rightCircleSize;
-    }
-
-    public void setRightCircleSize(float rightCircleSize) {
-        this.rightCircleSize = rightCircleSize;
-    }
-
-    public void startScaleAnimator() {
-        mLeftScaleAnimator.start();
-        mMidScaleAnimator.setStartDelay(200);
-        mMidScaleAnimator.start();
-        mRightScaleAnimator.setStartDelay(400);
-        mRightScaleAnimator.start();
+        switch (highlightIndex) {
+            case 0:
+                mPaint.setColor(circleColorHighlight);
+                canvas.drawCircle(20, 20, circleSize, mPaint);
+                mPaint.setColor(circleColor);
+                canvas.drawCircle(90, 20, circleSize, mPaint);
+                mPaint.setColor(circleColor);
+                canvas.drawCircle(160, 20, circleSize, mPaint);
+                break;
+            case 1:
+                mPaint.setColor(circleColor);
+                canvas.drawCircle(20, 20, circleSize, mPaint);
+                mPaint.setColor(circleColorHighlight);
+                canvas.drawCircle(90, 20, circleSize, mPaint);
+                mPaint.setColor(circleColor);
+                canvas.drawCircle(160, 20, circleSize, mPaint);
+                break;
+            case 2:
+                mPaint.setColor(circleColor);
+                canvas.drawCircle(20, 20, circleSize, mPaint);
+                mPaint.setColor(circleColor);
+                canvas.drawCircle(90, 20, circleSize, mPaint);
+                mPaint.setColor(circleColorHighlight);
+                canvas.drawCircle(160, 20, circleSize, mPaint);
+                break;
+        }
+        if (highlightIndex == 0) {
+            highlightIndex++;
+        } else if (highlightIndex == 2) {
+            highlightIndex--;
+        }
+        postInvalidateDelayed(30);
     }
 
 }

@@ -10,6 +10,5 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         WeChatLoadingView loadingView =findViewById(R.id.loading_view);
-        loadingView.startScaleAnimator();
     }
 }
