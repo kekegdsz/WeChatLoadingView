@@ -1,5 +1,7 @@
 package com.kekegdsz.apploadingview;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -15,12 +17,8 @@ public class WeChatLoadingView extends View {
 
     private Paint mPaint;
     private int circleColor = getResources().getColor(R.color.loading_view_color);
-    private int leftCircle = 5;
-    private int midCircle = 15;
-    private int rightCircle = 20;
-    private boolean leftZoom = true;
-    private boolean midZoom = true;
-    private boolean rightZoom = false;
+    private float defaultCircleSize = 5;
+
 
     public WeChatLoadingView(Context context) {
         this(context, null);
@@ -83,67 +81,34 @@ public class WeChatLoadingView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawCircle(20, 20, leftCircle, mPaint);
-        canvas.drawCircle(90, 20, midCircle, mPaint);
-        canvas.drawCircle(160, 20, rightCircle, mPaint);
-        leftCircle = leftAnimationSizeCount(leftCircle);
-        midCircle = midAnimationSizeCount(midCircle);
-        rightCircle = rightAnimationSizeCount(rightCircle);
-        postInvalidateDelayed(25);
+        canvas.drawCircle(20, 20, defaultCircleSize, mPaint);
+        canvas.drawCircle(90, 20, defaultCircleSize + 5, mPaint);
+        canvas.drawCircle(160, 20, defaultCircleSize + 10, mPaint);
+        startScaleAnimator(defaultCircleSize);
     }
 
-    private int rightAnimationSizeCount(int size) {
-        if (leftZoom) {
-            if (size == 20) {
-                leftZoom = false;
-            } else {
-                size++;
-            }
-        } else {
-            if (size == 5) {
-                leftZoom = true;
-                size++;
-            } else {
-                size--;
-            }
-        }
-        return size;
+
+    public float getDefaultCircleSize() {
+        return defaultCircleSize;
     }
 
-    private int midAnimationSizeCount(int size) {
-        if (midZoom) {
-            if (size == 20) {
-                midZoom = false;
-            } else {
-                size++;
-            }
-        } else {
-            if (size == 5) {
-                midZoom = true;
-                size++;
-            } else {
-                size--;
-            }
-        }
-        return size;
+    public void setDefaultCircleSize(float defaultCircleSize) {
+        this.defaultCircleSize = defaultCircleSize;
     }
 
-    private int leftAnimationSizeCount(int size) {
-        if (rightZoom) {
-            if (size == 20) {
-                rightZoom = false;
-            } else {
-                size++;
+    private void startScaleAnimator(float value) {
+        ObjectAnimator mScaleAnimator = ObjectAnimator
+                .ofFloat(this, "defaultCircleSize", value, 15);
+        mScaleAnimator.setDuration(30);
+        mScaleAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                defaultCircleSize = (float) animation.getAnimatedValue();
             }
-        } else {
-            if (size == 5) {
-                rightZoom = true;
-                size++;
-            } else {
-                size--;
-            }
-        }
-        return size;
+        });
+        mScaleAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        mScaleAnimator.start();
+
     }
 
 }
