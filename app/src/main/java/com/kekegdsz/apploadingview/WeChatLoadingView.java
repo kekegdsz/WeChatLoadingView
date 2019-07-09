@@ -11,10 +11,10 @@ import android.view.View;
  * Created by keke on 2018/12/7.
  */
 
-public class LoadingAnimationView extends View {
+public class WeChatLoadingView extends View {
 
     private Paint mPaint;
-    private int circleColor = getResources().getColor(R.color.colorPrimary);
+    private int circleColor = getResources().getColor(R.color.loading_view_color);
     private int leftCircle = 5;
     private int midCircle = 15;
     private int rightCircle = 20;
@@ -22,15 +22,15 @@ public class LoadingAnimationView extends View {
     private boolean midZoom = true;
     private boolean rightZoom = false;
 
-    public LoadingAnimationView(Context context) {
+    public WeChatLoadingView(Context context) {
         this(context, null);
     }
 
-    public LoadingAnimationView(Context context, @Nullable AttributeSet attrs) {
+    public WeChatLoadingView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public LoadingAnimationView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public WeChatLoadingView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
