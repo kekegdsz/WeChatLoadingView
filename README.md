@@ -26,10 +26,12 @@ allprojects {
  }
 }
 ```
+
+[![](https://jitpack.io/v/kekegdsz/WeChatLoadingView.svg)](https://jitpack.io/#kekegdsz/WeChatLoadingView)
 Add the dependency
 ```gradle
 dependencies {
-        implementation 'com.github.kekegdsz:WeChatLoadingView:1.0.0'
+        implementation 'com.github.kekegdsz:WeChatLoadingView:Tag'
 }
 ```
 ## Use LoadingView
