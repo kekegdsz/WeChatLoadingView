@@ -1,5 +1,5 @@
 # LoadingView
-> 高仿微信进入小程序的loading，三个点循环
+> 高仿微信进入小程序的loading，三个点循环，可以自定义颜色，数量，时间间隔，大小等
 
 [![](https://jitpack.io/v/kekegdsz/WeChatLoadingView.svg)](https://jitpack.io/#kekegdsz/WeChatLoadingView)
 
@@ -8,6 +8,9 @@
 
 * 2019年7月10日11:55:22
 > 1.0.1版本，修复由于是Androidx不能导入问题
+
+*2019年7月11日 00:20:19
+> 1.0.2版本，增加6总自定义属性用于用户拓展
 
 LoadingView|
 ---------- |
@@ -57,7 +60,9 @@ You can customize the look and behavior of the `LoadingView` in xml. Use the fol
 |loading_view_spacing|Point间隔大小|
 |loading_view_speed|Point移动时间间隔|
 
-```text
+
+License
+----------
 Copyright 2019 Ke Ke
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -71,4 +76,4 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-```
+
