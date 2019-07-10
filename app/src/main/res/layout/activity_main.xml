@@ -8,9 +8,15 @@
 
 
     <com.kekegdsz.view.LoadingView
-        android:layout_width="wrap_content"
         android:id="@+id/loading_view"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"
+        app:loading_view_circleColor="@android:color/holo_blue_bright"
+        app:loading_view_circleColorHighlight="@android:color/holo_red_dark"
+        app:loading_view_radius="5dp"
+        app:loading_view_num="9"
+        app:loading_view_spacing="30dp"
+        app:loading_view_speed="250" />
 
 </RelativeLayout>
