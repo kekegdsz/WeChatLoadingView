@@ -1,9 +1,8 @@
 package com.kekegdsz.apploadingview;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-import com.kekegdsz.view.LoadingView;
 
 public class MainActivity extends AppCompatActivity {
 

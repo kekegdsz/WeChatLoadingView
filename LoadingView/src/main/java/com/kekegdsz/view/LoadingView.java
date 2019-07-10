@@ -3,10 +3,9 @@ package com.kekegdsz.view;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-
-import androidx.annotation.Nullable;
 
 /**
  * Created by keke on 2018/12/7.
