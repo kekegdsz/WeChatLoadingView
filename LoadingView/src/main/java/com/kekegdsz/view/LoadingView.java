@@ -47,12 +47,11 @@ public class LoadingView extends View {
         mPaint = new Paint();
         mPaint.setColor(circleColor);
         mPaint.setAntiAlias(true);
-
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int desiredWidth = (int) ((int) radius * 2 + ((spacing + radius) * (num - 1)));
+        int desiredWidth = (int) ((int) (radius + spacing) * num - (spacing*2));
         int desiredHeight = (int) (radius * 2);
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
@@ -99,7 +98,7 @@ public class LoadingView extends View {
             } else {
                 mPaint.setColor(circleColor);
             }
-            canvas.drawCircle(radius + ((spacing + radius) * i), radius, radius, mPaint);
+            canvas.drawCircle(spacing * i + radius, radius, radius, mPaint);
         }
         highlightIndex++;
         postInvalidateDelayed(speed);

@@ -31,12 +31,31 @@ dependencies {
 ```
 ## Use LoadingView
 ```xml
-<com.kekegdsz.view.LoadingView
-    android:layout_width="wrap_content"
-    android:id="@+id/loading_view"
-    android:layout_height="wrap_content"
-    android:layout_centerInParent="true" />
+ <com.kekegdsz.view.LoadingView
+        android:id="@+id/loading_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:loading_view_circleColor="@android:color/holo_blue_bright"
+        app:loading_view_circleColorHighlight="@android:color/holo_red_dark"
+        app:loading_view_num="8"
+        app:loading_view_radius="5dp"
+        app:loading_view_spacing="30dp"
+        app:loading_view_speed="250" />
 ```
+
+## LoadingView has the following xml attributes
+
+You can customize the look and behavior of the `LoadingView` in xml. Use the following attributes in xml.
+
+| attribute | description |
+| --------------- | --------------------- |
+|loading_view_circleColor|Point默认颜色|
+|loading_view_circleColorHighlight|Point高亮颜色|
+|loading_view_num|Point数量|
+|loading_view_radius|Point半径|
+|loading_view_spacing|Point间隔大小|
+|loading_view_speed|Point移动时间间隔|
 
 ```text
 Copyright 2019 Ke Ke
