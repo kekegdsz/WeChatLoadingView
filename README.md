@@ -26,8 +26,9 @@ allprojects {
  }
 }
 ```
-
+## TAG:
 [![](https://jitpack.io/v/kekegdsz/WeChatLoadingView.svg)](https://jitpack.io/#kekegdsz/WeChatLoadingView)
+
 Add the dependency
 ```gradle
 dependencies {
