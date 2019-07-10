@@ -14,26 +14,26 @@ LoadingView|
 ## Gradle:
 Add it in your root build.gradle at the end of repositories:
 ```gradle
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+allprojects {
+ repositories {
+ 	...
+ 	maven { url 'https://jitpack.io' }
+ }
+}
 ```
 Add the dependency
 ```gradle
-	dependencies {
-	        implementation 'com.github.kekegdsz:WeChatLoadingView:1.0.0'
-	}
+dependencies {
+        implementation 'com.github.kekegdsz:WeChatLoadingView:1.0.0'
+}
 ```
 ## Use LoadingView
 ```xml
-    <com.kekegdsz.view.LoadingView
-        android:layout_width="wrap_content"
-        android:id="@+id/loading_view"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+<com.kekegdsz.view.LoadingView
+    android:layout_width="wrap_content"
+    android:id="@+id/loading_view"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true" />
 ```
 
 ```text
