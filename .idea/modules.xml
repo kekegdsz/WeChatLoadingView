@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/LoadingView/LoadingView.iml" filepath="$PROJECT_DIR$/LoadingView/LoadingView.iml" />
       <module fileurl="file://$PROJECT_DIR$/WeChatLoadingView.iml" filepath="$PROJECT_DIR$/WeChatLoadingView.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/LoadingView/WeChatLoadingView.LoadingView.iml" filepath="$PROJECT_DIR$/.idea/modules/LoadingView/WeChatLoadingView.LoadingView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/WeChatLoadingView.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/WeChatLoadingView.app.iml" />
     </modules>
   </component>
 </project>
